@@ -20,7 +20,7 @@
         ]
     },
     "require": {
-        "php": ">=7.4",
+        "php": ">=8.0",
         "illuminate/support": ">= v8.47.0",
         "illuminate/database": ">= v8.47.0"
     },
