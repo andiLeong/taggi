@@ -1,0 +1,41 @@
+{
+    "name": "andileong/taggi",
+    "description": "The Laravel Framework.",
+    "author": [
+        {
+            "name" : "Andi Leong",
+            "email" : "andiliang9988@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Andileong\\Taggi\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/TestCase.php",
+            "tests/stubs/TopicStubs.php",
+            "tests/stubs/TagStubs.php"
+        ]
+    },
+    "require": {
+        "php": ">=7.4",
+        "illuminate/support": ">= v8.47.0",
+        "illuminate/database": ">= v8.47.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Andileong\\Taggi\\TaggiServiceProvider"
+            ],
+            "aliases": {
+                "Taggi": "Andileong\\Taggi\\Facade"
+            }
+        }
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.19",
+        "phpunit/phpunit": "^9"
+    }
+}
