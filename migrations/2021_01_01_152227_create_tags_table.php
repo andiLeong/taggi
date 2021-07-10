@@ -17,7 +17,7 @@ class CreateTagsTable extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('slug');
-            $table->unsignedInteger('count')->default(0);
+//            $table->unsignedInteger('count')->default(0);
             $table->timestamps();
         });
 
@@ -32,11 +32,11 @@ class CreateTagsTable extends Migration
         });
 
 
-        Schema::create('topics', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->timestamps();
-        });
+//        Schema::create('topics', function (Blueprint $table) {
+//            $table->id();
+//            $table->string('name');
+//            $table->timestamps();
+//        });
 
     }
 

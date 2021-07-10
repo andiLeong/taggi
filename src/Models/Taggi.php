@@ -8,7 +8,6 @@ use function PHPUnit\Framework\throwException;
 
 trait Taggi
 {
-
     /**
      * define a tag relationship
      * @return \Illuminate\Database\Eloquent\Relations\MorphToMany
@@ -17,7 +16,6 @@ trait Taggi
     {
         return $this->morphToMany(Tag::class,'taggable')->withTimestamps();
     }
-
 
     /**
      * check if a model is tagged by a tag
@@ -59,9 +57,9 @@ trait Taggi
 
     /**
      * tag a tag from a model
-     * @param array|Tag|Collection $tags
+     * @param array|Tag|Collection|string $tags
      */
-    public function tag(array|Tag|Collection $tags)
+    public function tag(array|Tag|Collection|string $tags)
     {
         $tags = $this->formatTags($tags);
         $this->tags()->toggle($tags);
@@ -99,11 +97,7 @@ trait Taggi
             return $tags;
         }
 
-        if( is_array($tags)){
-            return $this->getTagsFromArray($tags);
-        }
-
-        throw new InvalidArgumentException('Unknown type pass to Tag action');
+        return $this->getTagsFromArray($tags);
     }
 
     /**

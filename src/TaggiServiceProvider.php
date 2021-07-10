@@ -15,7 +15,7 @@ class TaggiServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
+        $this->mergeConfigFrom(__DIR__.'/../config/taggi.php', 'taggi');
     }
 
     /**
@@ -26,6 +26,14 @@ class TaggiServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadMigrationsFrom(__DIR__.'/../migrations');
+
+        $this->publishes([
+            __DIR__.'/../migrations/' => database_path('migrations')
+        ], 'taggi-migrations');
+
+        $this->publishes([
+            __DIR__.'/../config/taggi.php' => config_path('taggi.php')
+        ], 'taggi-config');
 
         Tag::creating(function ($tag) {
             $tag->slug = Str::slug($tag->name);

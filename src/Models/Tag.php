@@ -27,11 +27,13 @@ class Tag extends Model
      * mass create tags
      * @param array $data
      */
-    public function massPut(array $data)
+    public function massPut(array|string $data)
     {
+        if(is_string($data)){
+            $data = $this->parserToArray($data);
+        }
         return (new TagCreation($data))->persist();
     }
-
 
     /**
      * remove a tag
@@ -57,9 +59,10 @@ class Tag extends Model
      * @param string $tags
      * @return array
      */
-    public function parser(string $tags): array
+    public function parser(string $tags)
     {
-        $pattern = "[,|!:.]";
+//        $pattern = "[,|!:.]";
+        $pattern = config('taggi.separator');
         return preg_split("/ ?$pattern ?/", Str::remove(' ', $tags) );
     }
 
